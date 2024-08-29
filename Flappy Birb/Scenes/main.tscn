@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpko0bmsyhaah"]
+[gd_scene load_steps=9 format=3 uid="uid://cpko0bmsyhaah"]
 
 [ext_resource type="Texture2D" uid="uid://d38ceuoo614k4" path="res://assets/bg.png" id="1_j3yvg"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_uw7lq"]
 [ext_resource type="PackedScene" uid="uid://du4sei4dax013" path="res://Scenes/pipe.tscn" id="2_n2fih"]
 [ext_resource type="PackedScene" uid="uid://c3rsmfpkk1miu" path="res://Scenes/birb.tscn" id="2_p2rj1"]
+[ext_resource type="PackedScene" uid="uid://cvq31jdsxftvc" path="res://Scenes/pipelower.tscn" id="3_lo13w"]
 [ext_resource type="PackedScene" uid="uid://demalrbcsmlbw" path="res://Scenes/ground.tscn" id="4_keg8d"]
+[ext_resource type="PackedScene" uid="uid://b6kyovgbw2v8t" path="res://Scenes/pipeupper.tscn" id="4_rgj8a"]
 [ext_resource type="PackedScene" uid="uid://b0t7w3c1xrene" path="res://Scenes/game_over.tscn" id="6_c5ucx"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_uw7lq")
 pipe_scene = ExtResource("2_n2fih")
+pipelower_scene = ExtResource("3_lo13w")
+pipeupper_scene = ExtResource("4_rgj8a")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_j3yvg")

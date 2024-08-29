@@ -11,6 +11,9 @@ var pipes : Array
 const PIPE_DELAY : int = 50
 const PIPE_RANGE : int = 200
 @export var pipe_scene : PackedScene
+@export var pipelower_scene : PackedScene
+@export var pipeupper_scene : PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_window().size
@@ -57,11 +60,36 @@ func _on_pipe_timer_timeout():
 	generate_pipes()
 
 func generate_pipes():
+	var choice : int = randi_range(1, 3)
+	if choice == 1:
+		generate_two_pipes()
+	elif choice == 2:
+		generate_top_pipe()
+	else:
+		generate_bottom_pipe()
+
+func generate_two_pipes():
 	var pipe = pipe_scene.instantiate()
 	pipe.position.x = screen_size.x + PIPE_DELAY
 	pipe.position.y = (screen_size.y - ground_height)/2 + randi_range(-PIPE_RANGE, PIPE_RANGE)
 	pipe.hit.connect(birb_hit)
 	pipe.scored.connect(scored)
+	add_child(pipe)
+	pipes.append(pipe)
+
+func generate_top_pipe():
+	var pipe = pipeupper_scene.instantiate()
+	pipe.position.x = screen_size.x + PIPE_DELAY
+	pipe.position.y = (screen_size.y - ground_height)/2 + randi_range(-PIPE_RANGE, PIPE_RANGE)
+	pipe.hit.connect(birb_hit)
+	add_child(pipe)
+	pipes.append(pipe)
+
+func generate_bottom_pipe():
+	var pipe = pipelower_scene.instantiate()
+	pipe.position.x = screen_size.x + PIPE_DELAY
+	pipe.position.y = (screen_size.y - ground_height)/2 + randi_range(-PIPE_RANGE, PIPE_RANGE)
+	pipe.hit.connect(birb_hit)
 	add_child(pipe)
 	pipes.append(pipe)
 
